@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
+const Profile = ({ onBack }) => { 
     const [user, setUser] = useState(null);
     const [mobileInput, setMobileInput] = useState("");
     const [mobileNameInput, setMobileNameInput] = useState("");
@@ -18,7 +18,6 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
         }
     };
 
-    // 2. Helper function to safely write to localStorage
     const setStoredUsers = (users) => {
         try {
             localStorage.setItem("users", JSON.stringify(users));
@@ -30,9 +29,7 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
         }
     };
 
-    // --- LOGIC FUNCTIONS (Using Helper Functions) ---
-
-    // Fetch user data
+   
     useEffect(() => {
         const users = getStoredUsers(); // SAFE READ
         if (users.length > 0) {
@@ -76,11 +73,11 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
             ],
         };
 
-        let users = getStoredUsers(); // SAFE READ
+        let users = getStoredUsers(); 
 
         if (users.length > 0) {
             users[users.length - 1] = updatedUser;
-            setStoredUsers(users); // SAFE WRITE
+            setStoredUsers(users); 
             setUser(updatedUser);
             setMobileInput("");
             setMobileNameInput("");
@@ -110,14 +107,14 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gray-900 p-8 text-white">
-            {/* Back to Dashboard Button */}
+           
             
             <button onClick={onBack} className="self-start mb-6 text-white hover:text-blue-600 transition-colors flex items-center space-x-2">
                 <span className="text-xl">←</span>
                 <span>Back to Dashboard</span>
             </button>
             
-            {/* Header */}
+           
             <div className="text-center mb-8 pt-8">
                 <h1 className="text-4xl font-bold text-blue-500 tracking-wide">
                     <span className="text-blue-600">📷 CIVA</span> Profile
@@ -125,11 +122,11 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
                 <p className="text-gray-400 mt-2">Manage your account details</p>
             </div>
 
-            {/* Profile Card */}
+           
             <div className="bg-gray-800 shadow-lg rounded-xl p-8 w-full max-w-md transition-all duration-300 hover:scale-[1.01] border-t-4 border-red-600">
                 <h2 className="text-2xl font-semibold mb-6 text-blue-500">Edit Profile Details</h2>
 
-                {/* Editable Email */}
+                
                 <div className="mb-4">
                     <label className="block text-gray-300 font-medium mb-1"> Email:</label>
                     <input
@@ -140,7 +137,7 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
                     />
                 </div>
 
-                {/* Editable Password */}
+               
                 <div className="mb-6">
                     <label className="block text-gray-300 font-medium mb-1"> Password:</label>
                     <input
@@ -151,7 +148,7 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
                     />
                 </div>
 
-                {/* Update Button */}
+               
                 <button
                     onClick={updateProfile}
                     className="w-full bg-blue-600 hover:bg-green-700 text-white py-3 rounded-md font-semibold mb-6 transition-all duration-300 hover:scale-[1.02]"
@@ -159,7 +156,7 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
                     Update Profile
                 </button>
 
-                {/* Mobile Numbers Display */}
+               
                 <div className="mb-6 border-t border-gray-700 pt-4">
                     <h3 className="text-lg font-medium text-red-500 mb-3"> Registered Notification Numbers:</h3>
                     {user.mobileNumbers && user.mobileNumbers.length > 0 ? (
@@ -183,7 +180,7 @@ const Profile = ({ onBack }) => { // onBack prop yahaan receive hoga
                     )}
                 </div>
 
-                {/* Add Mobile Section */}
+               
                 <div className="border-t border-gray-700 pt-4">
                     <h3 className="text-lg font-medium text-red-500 mb-3"> Add New Mobile Number</h3>
                     <div className="flex gap-3 mb-3">

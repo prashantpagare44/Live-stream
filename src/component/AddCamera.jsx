@@ -35,8 +35,7 @@ const AddCameraModal = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Username" 
-                            className="w-full p-3 bg-gray-700 border border-gray-600 rounded focus:border-blue-500 focus:outline-none" />
+                        
                         <input type="password" placeholder="Password" 
                             className="w-full p-3 bg-gray-700 border border-gray-600 rounded focus:border-blue-500 focus:outline-none" />
                     </div>
