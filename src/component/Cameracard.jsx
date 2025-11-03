@@ -28,12 +28,14 @@ const Cameracard = ({ camera, onSelect, isSelected })=>{
                 >
                     ▶ Live View
                 </button>
-                <button className="text-blue-400 hover:text-blue-300 whitespace-nowrap">
-                    ⚙ Setup
-                </button>
-                <button className="text-yellow-400 hover:text-yellow-300 whitespace-nowrap">
-                    🔗 Control
-                </button>
+                <button className="text-blue-400 hover:text-blue-300 whitespace-nowrap p-0" 
+                         onClick={(e) => { e.stopPropagation(); onSelect(camera.id); }} >
+                         ⚙ Setup
+               </button>
+                <button className="text-yellow-400 hover:text-yellow-300 whitespace-nowrap p-0"
+                       onClick={(e) => { e.stopPropagation(); onSelect(camera.id); }} >
+                      🔗 Control
+               </button>
             </div>
             
             </div>

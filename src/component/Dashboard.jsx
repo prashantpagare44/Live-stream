@@ -3,7 +3,7 @@ import CameraCard from './Cameracard.jsx'
 import LiveFeedPanel from './LiveFeedpanel.jsx'
 import AddCameraModal from './AddCamera.jsx'
 import Notification from './Notification.jsx'
-
+import Profile from './Profile.jsx'
  const DUMMY_CAMERAS = [
     { id: 'cam-001', name: "LivingRoomCam", status: "Live", ip: "192.168.0.101" },
     { id: 'cam-002', name: "GarageCam", status: "Offline", ip: "192.168.0.102" },
@@ -16,6 +16,7 @@ const [cameras , setCameras] = useState(DUMMY_CAMERAS);
 const [selectedCameraId, setSelectedCameraId] = useState(null);
 const [isAddCamera, setIsAddCamera] = useState(false);
 const [isNotification, setIsNotification] = useState(false);
+const [isProfileOpen, setIsProfileOpen] = useState(false);
 
 const handleCameraselect = (id)=>{
    setSelectedCameraId(id);
@@ -23,10 +24,25 @@ const handleCameraselect = (id)=>{
 }
 const selectedCamera = cameras.find(cam => cam.id === selectedCameraId);
 
+const handleAddCamera = (newCamera) => {
+   
+    setCameras(prevCameras => [
+        ...prevCameras, 
+        newCamera      
+    ]);
+};
+if (isProfileOpen) {
+    return (
+        <div className="min-h-screen bg-gray-900 text-white">
+            <Profile onBack={() => setIsProfileOpen(false)} /> 
+        </div>
+    );
+}
+
 return(
     <>
        <div className="min-h-screen bg-gray-900  ">
-        <header className="fixed top-0 left-0 w-full h-14 bg-red-900 flex items-center justify-between px-4 shadow-lg z-20 border-b border-gray-700 ">
+        <header className="fixed top-0 left-0 w-full h-14 bg-blue-300 flex items-center justify-between px-4 shadow-lg z-20 border-b border-gray-700 ">
                 
                 <div className="flex items-center text-xl font-bold">
                      <img className="text-3xl text-red-600 mr-2 rounded-full w-12 h-12" src="/Images/image.png" alt="Logo" />
@@ -37,7 +53,7 @@ return(
                     <button onClick={() => setIsNotification(!isNotification)} className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-700">
                         <span className="text-2xl">🔔</span> 
                     </button>
-                    <button className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-700">
+                    <button onClick={() => setIsProfileOpen(true)} className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-700">
                         <span className="text-2xl">👨‍💼</span> 
                     </button>
 
@@ -89,10 +105,11 @@ return(
                     )}
                 </div>
             </main>
-            <AddCameraModal
-               isOpen={isAddCamera}
-                 onClose={() => setIsAddCamera(false)}
-/>
+           <AddCameraModal
+             isOpen={isAddCamera}
+             onClose={() => setIsAddCamera(false)}
+             onSave={handleAddCamera} 
+           />
            <Notification
             isOpen={isNotification}
              onClose={() => setIsNotification(false)}

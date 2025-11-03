@@ -1,5 +1,14 @@
+import React, { useState } from 'react';
 
 const LiveFeedPanel = ({ camera , onBack }) => {
+    const [isTimeConstraintEnabled, setIsTimeConstraintEnabled] = useState(false);
+    const [isPolygonModeEnabled, setIsPolygonModeEnabled] = useState(false);
+    const [isNotificationEnabled, setIsNotificationEnabled] = useState(true);
+
+    const toggleState = (setter) => {
+        setter(prev => !prev);
+    };
+
     return (
         <div className="bg-gray-800 p-6 rounded-lg shadow-xl border-t-4 border-red-600">
             
@@ -20,16 +29,29 @@ const LiveFeedPanel = ({ camera , onBack }) => {
             <div className="space-y-4">
                 <div className="flex justify-between items-center p-3 bg-gray-700 rounded-md">
                     <span className="text-gray-200">Time Constraint: Set Time Range</span>
-                    <button className="text-blue-400 hover:text-blue-300 font-medium">Toggle [ON/OFF]</button>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-gray-700 rounded-md">
+             <button onClick={() => toggleState(setIsTimeConstraintEnabled)} 
+            className=  {`font-medium ${isTimeConstraintEnabled ? 'text-green-400 hover:text-green-300' : 'text-blue-400  hover:text-blue-300'}`}>
+            {isTimeConstraintEnabled ? 'ON' : 'OFF'}</button>
+        </div>
+         <div className="flex justify-between items-center p-3 rounded-md transition-colors 
+                    ${isPolygonModeEnabled ? 'bg-green-800/50' : 'bg-gray-700'}">
                     <span className="text-gray-200">Detection Polygon Mode: Enable/Disable</span>
-                    <button className="text-yellow-400 hover:text-yellow-300 font-medium">View / Edit Area</button>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-gray-700 rounded-md">
+        <button 
+            onClick={() => toggleState(setIsPolygonModeEnabled)} 
+            className={`font-medium ${isPolygonModeEnabled ? 'text-green-400 hover:text-green-300' : 'text-yellow-400 hover:text-yellow-300'}`}>
+            
+            
+            {isPolygonModeEnabled ? 'ENABLED' : ' DISABLED'}
+        </button>                </div>
+               <div className="flex justify-between items-center p-3 rounded-md transition-colors 
+                               ${isNotificationEnabled ? 'bg-green-800/50' : 'bg-gray-700'}">
                     <span className="text-gray-200">Notification: Toggle ON/OFF</span>
-                    <button className="text-green-400 hover:text-green-300 font-medium">Toggle</button>
-                </div>
+<button onClick={() => toggleState(setIsNotificationEnabled)} 
+            className={`font-medium ${isNotificationEnabled ? 'text-green-400 hover:text-green-300' : 'text-red-400 hover:text-red-300'}`}>
+            
+{isNotificationEnabled ? 'ON' : 'OFF'}
+        </button>               
+         </div>
             </div>
 
             <div className="mt-6 text-center">
