@@ -6,7 +6,12 @@ const AddCameraModal = ({ isOpen, onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
-            
+             <header className="fixed top-0 left-0 w-full h-14 bg-blue-300 flex items-center px-4  border-b border-gray-700">
+                <div className="flex items-center text-xl font-bold">
+                   <span className="text-3xl text-red-600 mr-2">📹</span> 
+                   <span className="text-white">LiveStream Detect</span>
+                 </div>
+              </header>
             <div className="bg-gray-800 p-8 rounded-lg shadow-2xl w-full max-w-lg border-t-4 border-blue-600">
                 
                 
@@ -38,7 +43,7 @@ const AddCameraModal = ({ isOpen, onClose }) => {
 
                     <div className="space-y-3 pt-2">
                  
-                        <div className="flex justify-between items-center p-2 bg-gray-700 rounded-md">
+                        {/* <div className="flex justify-between items-center p-2 bg-gray-700 rounded-md">
                             <span>Time Constraint Toggle [ON/OFF]</span>
                             <button type="button" className="text-blue-400 font-medium">Toggle</button>
                         </div>
@@ -46,7 +51,7 @@ const AddCameraModal = ({ isOpen, onClose }) => {
                         <div className="flex justify-between items-center p-2 bg-gray-700 rounded-md">
                             <span>Draw Polygon Interface [Open]</span>
                             <button type="button" className="text-yellow-400 font-medium">Open</button>
-                        </div>
+                        </div> */}
                     </div>
 
             
