@@ -1,16 +1,57 @@
-# React + Vite
+# Live Stream — Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live frontend for a livestream + real-time chat UI.  
+This repository contains the **React + Vite** frontend only. The live demo is available at:
 
-Currently, two official plugins are available:
+**Live demo:** https://live-stream-orcin.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Live Stream Screenshot](/mnt/data/c7da9b0a-5d7d-4c79-8a78-e715c7f35866.png)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## About
+This project is the frontend client for a livestream application. It provides a responsive UI for:
+- Viewing a livestream
+- Real-time chat & viewer list (Socket events handled by backend)
+- Host/Viewer UI (depending on integration)
+- Uploading thumbnails or small media items (frontend form + Multer backend expected)
+  
+> **Note:** This repo is frontend-only. A backend server (API + Socket.io) is expected for authentication, persistence and real-time functionality. Update `VITE_API_URL` / `VITE_SOCKET_URL` in `.env` to point to your backend.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+- Responsive React UI built with Vite
+- Live chat panel (UI-ready for Socket.io events)
+- Viewer list & live viewer count UI
+- Stream thumbnail upload form (frontend)
+- Authentication-ready flows (login/signup UI)
+- Clean component structure for easy extension
+
+---
+
+## Tech stack
+- Frontend: React (with Vite)
+- Styling: Tailwind CSS (or plain CSS depending on repo)
+- Build: Vite
+- Optional integrations: Socket.io (for real-time), fetch/axios for API calls
+
+---
+
+## Getting started (local development)
+
+### Prerequisites
+- Node.js 18+ (recommended)
+- npm or yarn
+
+### Install & run
+```bash
+
+# install dependencies
+npm install
+# or
+# yarn
+
+# start dev server
+npm run dev
+# open URL printed by Vite (usually http://localhost:5173)
